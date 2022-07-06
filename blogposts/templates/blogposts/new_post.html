@@ -1,0 +1,31 @@
+{% extends "blogposts/base.html" %}
+
+{% block title %}New Post{% endblock %}
+
+{% block body %}
+    <h1>New Post ({{ method }})</h1>
+    <form action="/post/new/" method="POST">
+        {% csrf_token %}
+        <div class="form-row">
+            <label>
+                Title:
+                <input type="text" name="title" />
+            </label>
+        </div>
+        <div class="form-row">
+            <label>
+                Author: 
+                <input type="text" name="author" />
+            </label>
+        </div>
+        <div class="form-row">
+            <label>
+                Text:
+                <textarea name="text" cols="30" rows="10"></textarea>
+            </label>
+        </div>
+        <button type="submit">Create post</button>
+    </form>
+
+    <p><a href="{% url 'index' %}">Home</a></p>
+{% endblock %}

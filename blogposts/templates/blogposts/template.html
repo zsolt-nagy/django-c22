@@ -1,13 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blogposts</title>
-</head>
-<body>
+{% extends "blogposts/base.html" %}
+
+{% block title %}
+Blogposts
+{% endblock %}
+
+{% block body %}
     <h1>Blogposts</h1>
     <p>This is the main blogposts view.</p>
-</body>
-</html>
+    <p>There are {{ count }} blogposts in this blog.</p>
+
+    <ul>
+        {% for post in posts %}
+        <li><a href="{% url 'post' id=post.id %}">{{ post.title }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <p><a href="{% url 'new_post' %}">New Post</a></p>
+{% endblock %}
